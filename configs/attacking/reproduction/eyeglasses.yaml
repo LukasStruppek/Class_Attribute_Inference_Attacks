@@ -1,0 +1,35 @@
+---
+seed: 0
+dataset: celeba
+
+candidates:
+  0: [No_Eyeglasses, attribute_images/ffhq/eyeglasses/no_eyeglasses]
+  1: [Eyeglasses, attribute_images/ffhq/eyeglasses/wearing_eyeglasses]
+
+target_model:
+  wandb_run: XXXXXXXXXXXXXXXXX
+  transformations:
+    Resize:
+      size: [224, 224]
+    Normalize:
+      mean: 0.5
+      std: 0.5
+
+attack:
+  attack_sample_range: [0, 100]
+  targets: all
+  batch_size: 100
+  attribute_class: eyeglasses
+  labels: labels/celeba_subset_attributes/celeba200_eyeglasses_attribute_labels.csv
+  majority_vote: false
+
+rtpt:
+  experiment_name: CAIA
+  name_initials: XX
+
+wandb: 
+  enable_logging: true
+  wandb_init_args:
+    project: CAIA_Eyeglasses
+    save_code: true
+    name: resnet101_eyeglasses_0_0

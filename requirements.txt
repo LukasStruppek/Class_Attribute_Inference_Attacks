@@ -1,0 +1,19 @@
+--extra-index-url https://download.pytorch.org/whl/cu113
+torch==1.12.1
+torchvision==0.13.1
+fvcore==0.1.5.post20211023
+scikit-learn==1.2.1
+requests==2.27.1
+numpy==1.21.2 
+diffusers==0.3.0
+transformers==4.24.0
+captum==0.6.0
+wandb
+rtpt
+opencv-python
+pandas
+yapf
+ipywidgets
+accelerate
+matplotlib
+ftfy

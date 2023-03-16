@@ -1,0 +1,37 @@
+---
+seed: 0
+dataset: celeba
+
+candidates:
+  0: [white, attribute_images/ffhq/race/with_white_skin]
+  1: [black, attribute_images/ffhq/race/with_black_skin]
+  2: [asian, attribute_images/ffhq/race/with_asian_appearance]
+  3: [indian, attribute_images/ffhq/race/with_indian_appearance]
+
+target_model:
+  wandb_run: XXXXXXXXXXXXXXXXX
+  transformations:
+    Resize:
+      size: [224, 224]
+    Normalize:
+      mean: 0.5
+      std: 0.5
+
+attack:
+  attack_sample_range: [0, 100]
+  targets: all
+  batch_size: 100
+  attribute_class: race
+  labels: labels/celeba_subset_attributes/celeba400_race_attribute_labels.csv
+  majority_vote: false
+
+rtpt:
+  experiment_name: CAIA
+  name_initials: XX
+
+wandb: 
+  enable_logging: true
+  wandb_init_args:
+    project: CAIA_Race
+    save_code: true
+    name: resnet101_race_0_0

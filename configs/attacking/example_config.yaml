@@ -1,0 +1,38 @@
+---
+seed: 42 # Seed used for splitting the datasets and initialize the attack.
+dataset: celeba # Target dataset, select one of [facescrub, celeba].
+
+candidates: # Define the paths to the generated candidate samples. The index refers to the class index of the attribute classifier.
+  0: [Female, data/synthetic/gender/female] # Define the label corresponding to the label file and the path to the samples for this label.
+  1: [Male, data/synthetic/gender/male]
+
+target_model: # Specify the classifier to attack.
+  wandb_run: XXXXXXXXXXXXXXXXX # WandB run for the trained model.
+  transformations: # Transformations applied to classifier input. All transformations and parameters provided in torchvision.transforms could be specified.
+    Resize:
+      size: [224, 224]
+    Normalize:
+      mean: 0.5
+      std: 0.5
+
+attack: # Specify the attack parameters
+  attack_sample_range: [0, 100] # Specify the range of attack samples used, here the first 100 samples
+  targets: all # Specify the targeted classes, either a single class index, a list of indices, or all.
+  batch_size: 100
+  attribute_class: gender # Define the attribute class to infer. Select one of [gender, eyeglasses, hair_color, race]
+  labels: labels/celeba_subset_attributes/celeba500_gender_attribute_labels.csv # Set the path to the file with the ground-truth attribute labels.
+  majority_vote: false # If true use majority vote for prediction, if false use the score advantage.
+
+rtpt: # State RTPT details. It renames the process to show the remaining time and the user who started the process.
+  experiment_name: CAIA
+  name_initials: XX
+
+wandb: # Options for WandB logging.
+  enable_logging: false # Activate logging.
+  wandb_init_args: # WandB init arguments.
+    project: CAIA
+    save_code: true
+    name: ResNet101_CelebA_Gender
+    tags:
+      - Some
+      - Tags

@@ -1,0 +1,37 @@
+---
+seed: 0
+dataset: celeba
+
+candidates:
+  0: [black_hair, attribute_images/ffhq/hair_color/with_black_hair]
+  1: [blond_hair, attribute_images/ffhq/hair_color/with_blond_hair]
+  2: [brown_hair, attribute_images/ffhq/hair_color/with_brown_hair]
+  3: [gray_hair, attribute_images/ffhq/hair_color/with_gray_hair]
+
+target_model:
+  wandb_run: XXXXXXXXXXXXXXXXX
+  transformations:
+    Resize:
+      size: [224, 224]
+    Normalize:
+      mean: 0.5
+      std: 0.5
+
+attack:
+  attack_sample_range: [0, 100]
+  targets: all
+  batch_size: 100
+  attribute_class: hair_color
+  labels: labels/celeba_subset_attributes/celeba400_haircolor_attribute_labels.csv
+  majority_vote: false
+
+rtpt:
+  experiment_name: CAIA
+  name_initials: XX
+
+wandb: 
+  enable_logging: true
+  wandb_init_args:
+    project: CAIA_Hair_Color
+    save_code: true
+    name: resnet101_hair_color_0_0

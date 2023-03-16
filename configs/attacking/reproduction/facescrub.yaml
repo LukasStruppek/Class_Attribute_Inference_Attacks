@@ -1,0 +1,35 @@
+---
+seed: 0
+dataset: celeba
+
+candidates:
+  0: [Female, attribute_images/ffhq/gender/female_appearance]
+  1: [Male, attribute_images/ffhq/gender/male_appearance]
+
+target_model:
+  wandb_run: XXXXXXXXXXXXXXXXX
+  transformations:
+    Resize:
+      size: [224, 224]
+    Normalize:
+      mean: 0.5
+      std: 0.5
+
+attack:
+  attack_sample_range: [0, 100]
+  targets: all
+  batch_size: 100
+  attribute_class: gender
+  labels: labels/celeba_subset_attributes/facescrub_attributes.csv
+  majority_vote: false
+
+rtpt:
+  experiment_name: CAIA
+  name_initials: XX
+
+wandb: 
+  enable_logging: true
+  wandb_init_args:
+    project: CAIA_FaceScrub
+    save_code: true
+    name: resnet101_gender_0_0

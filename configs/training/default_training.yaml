@@ -1,0 +1,57 @@
+---
+seed: 42 # Seed for model training.
+
+model:
+  architecture: resnest101  # Model architecture, e.g., resnet50, densenet169, inceptionv3.
+  num_classes: 400 # Number of classes in the training set.
+  pretrained: true # Using the ImageNet weights for initialization.
+
+dataset:
+  type: celeba_identities # Select on of [facescrub, celeba_identities].
+  attribute_group: gender # Define the attribute group for celeba identities. Select one of [gender, eyeglasses, hair_color, race].
+  training_set_size: 10000 # Number of training samples. Delete to use all samples in the dataset.
+  validation_set_size: 500 # Absolute number validation samples taken from the training set.
+  # validation_split_ratio: 0.2 # Alternative to validation_set_size, split is taken from the training set.
+  image_size: 224 # Image size of training samples before application of transformations.
+
+transformations: # Transformations applied during training. 
+                 # All transformations and parameters provided in torchvision.transforms could be specified.
+  RandomResizedCrop:
+    size: [224, 224]
+    scale: [0.75, 1]
+    ratio: [1, 1]
+  RandomHorizontalFlip:
+    p: 0.5
+
+optimizer:  # Specify the optimizer and its parameters from torch.optim for training.
+  Adam:
+    lr: 0.001
+    betas: [0.9, 0.999]
+    weight_decay: 0
+
+lr_scheduler: # Option to provide a learning rate scheduler from torch.optim.
+  MultiStepLR:
+    milestones: [60, 70]
+    gamma: 0.1
+
+training: # Select the training parameters.
+  num_epochs: 75
+  batch_size: 128
+  dataloader_num_workers: 8
+  save_path: results/
+  robust_training: false # set true to perform adversarial training with PGD.
+
+rtpt: # State RTPT details. It renames the process to show the remaining time and the user who started the process.
+  experiment_name: Training classifier
+  name_initials: XX
+
+wandb: # Options for WandB logging.
+  enable_logging: true # Set to true to activate the logging.
+  args: # Arguments for wandb.init call. See https://docs.wandb.ai/ref/python/init for a complete overview.
+    project: model_inversion_targets
+    name: ResNeSt101_CelebA_Gender
+    save_code: true
+    notes: Training a model
+    tags:
+      - Some
+      - Tags

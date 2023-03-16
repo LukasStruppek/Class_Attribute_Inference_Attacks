@@ -1,0 +1,52 @@
+seed: 42
+
+model:
+  architecture: resnet50
+  num_classes: 2
+  pretrained: true
+
+dataset:
+  type: celeba_attributes
+  validation_set_size: 0
+  image_size: 224
+  attribute_group: gender
+  balanced_sampling: true
+  root: data/celeba
+
+transformations:
+  RandomResizedCrop:
+    size: [224, 224]
+    scale: [0.8, 1]
+    ratio: [0.8, 1.25]
+  RandomHorizontalFlip:
+    p: 0.5
+
+optimizer:
+  Adam:
+    lr: 0.001
+    betas: [0.9, 0.999]
+    weight_decay: 0.0
+
+lr_scheduler:
+  MultiStepLR:
+    milestones: [9]
+    gamma: 0.1
+
+training:
+  num_epochs: 10
+  batch_size: 128
+  dataloader_num_workers: 8
+  save_path: results/
+  robust_training: false
+  label_smoothing: 0.1
+
+rtpt:
+  experiment_name: Training filter model
+  name_initials: XX
+
+wandb:
+  enable_logging: true
+  args:
+    project: Filter_Models
+    name: CelebA_Gender_ResNet50
+    save_code: true

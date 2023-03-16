@@ -1,0 +1,26 @@
+
+stable_diffusion:
+  model_path: runwayml/stable-diffusion-v1-5
+
+filter_model:
+  wandb_run: XXXXXXXXXXXXXXXXX
+  threshold: 0.6
+  transformations:
+    Resize:
+      size: [224, 224]
+    Normalize:
+      mean: 0.5
+      std: 0.5
+
+generation:
+  image_latents: data/ffhq_latents
+  output_folder: attribute_images
+  cross_replace_steps: 1.0
+  self_replace_steps: 0.6
+  attribute_class: hair_color
+  attributes: [with black hair, with blond hair, with brown hair, with gray hair]
+  num_samples: 300
+
+rtpt:
+  experiment_name: Attribute_Variation
+  name_initials: XX
