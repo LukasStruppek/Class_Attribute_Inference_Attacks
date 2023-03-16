@@ -43,3 +43,15 @@ def load_model(run_path,
     model.wandb_name = run.name
     model.eval()
     return model
+
+
+def init_wandb_logging(target_model_name, target_model_architecture, config,
+                       args):
+    if not 'name' in config.wandb['wandb_init_args']:
+        config.wandb['wandb_init_args'][
+            'name'] = f'{target_model_name}_{config.attack["attribute"]}'
+    wandb_config = config.create_wandb_config()
+    wandb_config['architecture'] = target_model_architecture
+    run = wandb.init(config=wandb_config, **config.wandb['wandb_init_args'])
+    wandb.save(args.config)
+    return run
