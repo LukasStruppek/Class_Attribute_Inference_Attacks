@@ -6,6 +6,7 @@
 
 > **Abstract:**
 > *Neural network-based image classifiers are powerful tools for computer vision tasks, but they inadvertently reveal sensitive attribute information about their classes, raising concerns about their privacy. To investigate this privacy leakage, we introduce the first **C**lass **A**ttribute **I**nference **A**ttack (**CAIA**), which leverages recent advances in text-to-image synthesis to infer sensitive attributes of individual classes in a black-box setting, while remaining competitive with related white-box attacks. Our extensive experiments in the face recognition domain show that CAIA can accurately infer undisclosed sensitive attributes, such as an individual's hair color, gender, and racial appearance, which are not part of the training labels. Interestingly, we demonstrate that adversarial robust models are even more vulnerable to such privacy leakage than standard models, indicating that a trade-off between robustness and privacy exists.*  
+[Full Paper](https://arxiv.org/abs/2303.09289)
 
 # Setup and Preparation
 
@@ -149,7 +150,7 @@ If you build upon our work, please don't forget to cite us.
     title={Image Classifiers Leak Sensitive Attributes About Their Classes},
     author={Lukas Struppek and Dominik Hintersdorf and Felix Friedrich and Manuel Brack and Patrick Schramowski and Kristian Kersting},
     journal = {arXiv preprint},
-    volume = {arXiv},
+    volume = {arXiv:2303.09289},
     year = {2023}
 }
 ```
