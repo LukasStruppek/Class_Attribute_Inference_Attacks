@@ -147,7 +147,7 @@ Replace ```{CLASSIFIER_RUNPATH}``` with the WandB run path to the classifier mod
 If you build upon our work, please don't forget to cite us.
 ```
 @inproceedings{struppek2023Caia,
-    title={Image Classifiers Leak Sensitive Attributes About Their Classes},
+    title={Class Attribute Inference Attacks: Inferring Sensitive Class Information by Diffusion-Based Attribute Manipulations},
     author={Lukas Struppek and Dominik Hintersdorf and Felix Friedrich and Manuel Brack and Patrick Schramowski and Kristian Kersting},
     journal = {arXiv preprint},
     volume = {arXiv:2303.09289},
