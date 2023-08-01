@@ -68,7 +68,7 @@ For CelebA, we used a custom crop of the images using the [HD CelebA Cropper](ht
 ## Training Filter Models
 To improve the attack sample generation process and filter out generated images that do not depict the target attribute values, we trained different filter models on CelebA on the attributes *gender*, *hair_color*, and *eyeglasses*. Training hyperparameters, augmentations, and WandB options are set in [configuration files](configs/training/filter_models). To train,e.g., a gender classifier, run the following script:
 ```bash
-python train_target.py -c=configs/training/filter_models/gender_classifier.yaml
+python train_model.py -c=configs/training/filter_models/gender_classifier.yaml
 ```
 
 We further utilized a pretrained FairFace classifier from [github.com/dchen236/FairFace](https://github.com/dchen236/FairFace) to filter the racial appearance images. Download the ```res34_fair_align_multi_4_20190809.pt``` model from [Google Drive](https://drive.google.com/drive/folders/1F_pXfbzWvG-bhCpNsRj6F_xsdjpesiFu) and put it into ```weights/fairface/res34_fair_align_multi_4_20190809.pt```. If another directory is used to store the weights, please adjust the synthesizing [configuration files](configs/synthesizing) accordingly.
@@ -80,7 +80,7 @@ To define the model and training configuration, create a configuration file. We 
 
 After a training configuration file has been created, run the following command to start the training with the specified configuration:
 ```bash
-python train_target.py -c=configs/training/default_training.yaml
+python train_model.py -c=configs/training/default_training.yaml
 ```
 
 # Crafting Attack Dataset
