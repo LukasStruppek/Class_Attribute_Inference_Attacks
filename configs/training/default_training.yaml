@@ -2,7 +2,7 @@
 seed: 42 # Seed for model training.
 
 model:
-  architecture: resnest101  # Model architecture, e.g., resnet50, densenet169, inceptionv3.
+  architecture: resnet101  # Model architecture, e.g., resnet50, resnest101, densenet169, inceptionv3.
   num_classes: 400 # Number of classes in the training set.
   pretrained: true # Using the ImageNet weights for initialization.
 
@@ -49,7 +49,7 @@ wandb: # Options for WandB logging.
   enable_logging: true # Set to true to activate the logging.
   args: # Arguments for wandb.init call. See https://docs.wandb.ai/ref/python/init for a complete overview.
     project: model_inversion_targets
-    name: ResNeSt101_CelebA_Gender
+    name: ResNet101_CelebA_Gender
     save_code: true
     notes: Training a model
     tags:
