@@ -80,7 +80,7 @@ To define the model and training configuration, create a configuration file. We 
 
 After a training configuration file has been created, run the following command to start the training with the specified configuration:
 ```bash
-python train_model.py -c=configs/training/default_training.yaml
+python train_model.py -c=configs/training/{CONFIG}
 ```
 
 # Crafting Attack Dataset
@@ -110,7 +110,7 @@ To perform our attacks, prepare an attack configuration file including the WandB
 
 After an attack configuration file has been created, run the following command to start the attack with the specified configuration:
 ```bash
-python attack.py -c=configs/attacking/default_attacking.yaml
+python attack.py -c=configs/attacking/{CONFIG}
 ```
 
 To run all attacks specified in a folder, here the ```resnet18``` folder, run the following command:
