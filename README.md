@@ -149,9 +149,8 @@ If you build upon our work, please don't forget to cite us.
 @inproceedings{struppek2023Caia,
     title={Class Attribute Inference Attacks: Inferring Sensitive Class Information by Diffusion-Based Attribute Manipulations},
     author={Lukas Struppek and Dominik Hintersdorf and Felix Friedrich and Manuel Brack and Patrick Schramowski and Kristian Kersting},
-    journal = {arXiv preprint},
-    volume = {arXiv:2303.09289},
-    year = {2023}
+    booktitle = {Conference on Neural Information Processing Systems (NeurIPS) - Workshop on New Frontiers in Adversarial Machine Learning},
+    year = {2024}
 }
 ```
 
